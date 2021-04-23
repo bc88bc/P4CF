@@ -1,0 +1,74 @@
+---
+title: "README"
+author: Brian Chiou
+date: April 12, 2021
+output: github_document
+---
+
+Given a station location, FORTRAN code *P4CF* computes source and path **P**arameters for(**4**) a **C**urved **F**ault rupture. This code has been used in PEER's NGA-West2 and NGA-Subduction projects ($reference$) to calculate source and path metadata for the respective project database.
+
+# Inputs
+
+Inputs of _P4CF_ consists of three parts: command-line inputs; input file of finite-fault model; input file of station coordinates.
+
+## Command-line inputs
+
+## Input file of finite-fault model (.TLL or .TXY)
+- Line 1: 
+- Line 2: Relative to the upper-right corner (that is, the first vertex of rupture trace in the finite-fault file), hypocenter location may be specified as a fraction of fault length and a fraction of fault width for along-strike and down-dip position, respectively.
+- Line 3:
+- Line 4:
+- Line 5:
+- Line 6: 
+
+
+### Important Conventions
+
+## Input file of station coordinate (.TLL or .TXY)
+
+One line per station
+
+- (a5, ....) EQID, Sta_seq_no, Sta_name, Sta_long, Sta_lat, Sta_elev (not used)
+  - The first four fields consists of the earthquake identification, the fifth field represents the fault identifier
+  - For the .SLL file (coordindates are in longitude/latitude), Sta_long and Sta_lat are the longitude and latitude of station
+  - For the .SXY file (coordinates are not in longitude/latitude), Sta_long and Sta_lat are the easting and northing coordinate of station. 
+
+
+# Outputs
+
+Outputs of *P4CF* include
+
+- Station coordinates
+    - $(X, Y)$: If input is int geographic coordinates (longitude/latitude), Cartesian coordinates relative to the origin specified in the finite-fault file
+    - $(U, T)$: Generalized coordinates 2 (GC2) relative to the rupture trace specified in the finite-fault file (Spudich and Chiou, 2015)
+      - $R_y$ and $R_{y0}$ in the NGA database are derived from the $U$ coordinate as follows: 
+        - $R_y = U - 2/L$, where $L$ is the rupture length 
+        - $R_{y0}$ = ....
+      - $R_x = |T|$ 
+        - Negative $T$ indicates that station is located on the foot-wall side, while positive $T$ indicates hangingwall side
+
+- Distance measures
+
+  - Station-to-point-source distance
+    - $R_{epi}$: distance between Station and Epicenter
+    - $R_{hyp}$: distance between Station and Hypocenter
+
+  - Station-to-finite-rupture distance (distances to the Finite-Fault (*FF*) rupture model of earthquake rupture)
+
+    - $R_{rup}$: shortest distance to the FF model
+    - $R_{jb}$: shortest distance to the surface projection of *FF* model
+    - $R_{rms}$: root-mean-squared distance to *FF* model $definition$
+
+- Finite-fault's strike-parallel direction 
+
+  - $AveStrike$: average of strike-parallel directions over the segments of FF model; useful for curved fault rupture
+  - $LocStrike$: representing the local strike-parallel direction near a station ($definition$)
+  - _Note_: Both strike-parallel directions can be utilized to rotate the two horizontal components of ground-motion time series to strike-normal and strike-parallel components. In the two NGA Projects, $LocStrike$ has been used for that purpose.
+
+- Direct-Point Parameter of rupture directivity (Spudich Chiou, 2013; Chiou and Spudich, 2013)
+  - $\hat{c}'$: approximate isochrone velocity, normalized to a shear-wave velocity of 3.2 km/s
+  - $E$: length of the hypocenter-to-direct-point (H2D) line source
+  - $aveR$: radiation pattern averaged over the H2D line source
+  - $DPP$: direct-point parameter of rupture directivity 
+
+-   
