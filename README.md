@@ -11,19 +11,25 @@ the respective project database.
 
 # Inputs
 
-Inputs of *P4CF* consists of three parts: command-line inputs; input
-file of finite-fault model; input file of station coordinates.
+Inputs of *P4CF* consists of three parts:
+
+1.  Inputs on command-line
+2.  Finite-fault model file, whose name has the extension .*TLL* or
+    .*TXY*
+3.  Station coordinates file, whose name has the extension .*SLL* or
+    .*SXY*
 
 ## Command-line inputs
 
-## Input file of finite-fault model (.TLL or .TXY)
+## Finite-fault model input file (.*TLL* or .*TXY*)
 
 -   Line 1:
--   Line 2: Relative to the upper-right corner (that is, the first
-    vertex of rupture trace in the finite-fault file), hypocenter
-    location may be specified as a fraction of fault length and a
-    fraction of fault width for along-strike and down-dip position,
-    respectively.
+-   Line 2: Hypocenter location in latitude, longitude, and depth
+    -   Relative to the upper-left corner of rupture plane (that is, the
+        first vertex of rupture trace in the finite-fault file),
+        hypocenter location may be specified as a fraction of fault
+        length and a fraction of fault width for along-strike and
+        down-dip position, respectively.
 -   Line 3:
 -   Line 4:
 -   Line 5:
@@ -31,7 +37,7 @@ file of finite-fault model; input file of station coordinates.
 
 ### Important Conventions
 
-## Input file of station coordinate (.TLL or .TXY)
+## Station coordinates input file (.TLL or .TXY)
 
 One line per station
 

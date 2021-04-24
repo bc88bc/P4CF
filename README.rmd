@@ -5,17 +5,31 @@ date: April 12, 2021
 output: github_document
 ---
 
-Given a station location, FORTRAN code *P4CF* computes source and path **P**arameters for(**4**) a **C**urved **F**ault rupture. This code has been used in PEER's NGA-West2 and NGA-Subduction projects ($reference$) to calculate source and path metadata for the respective project database.
+Given a station location, FORTRAN code *P4CF* computes source and path **P**arameters for(**4**) a **C**urved **F**ault rupture. This code has been used in PEER's NGA-West and NGA-Subduction projects (Chiou and others, 2008; Ancheta et al., 2014; Contreras et al. 2021) to calculate source and path metadata for the respective project database.
 
 # Inputs
 
-Inputs of _P4CF_ consists of three parts: command-line inputs; input file of finite-fault model; input file of station coordinates.
+Inputs to _P4CF_ are entered in a DOS command, as follows: 
+1. 
+
+To terminate calculation, enter *q* as EQID.
+
+NOTE: When finite-fault model of an earthquake is unavailable, the companion 
+FORTRAN code *CCLD* can be used to simulate possible fault rupture planes according 
+to the known information of hypocenter location and focal mechanism (strike/dip). 
+
+1. Inputs on command-line, which apply to all earthquakes
+2. Finite-fault model file, whose name has the extension .*TLL* or .*TXY*
+3. Station coordinates file, whose name has the extension .*SLL* or .*SXY*
+
 
 ## Command-line inputs
 
-## Input file of finite-fault model (.TLL or .TXY)
+
+## Finite-fault model input file (.*TLL* or .*TXY*)
 - Line 1: 
-- Line 2: Relative to the upper-right corner (that is, the first vertex of rupture trace in the finite-fault file), hypocenter location may be specified as a fraction of fault length and a fraction of fault width for along-strike and down-dip position, respectively.
+- Line 2: Hypocenter location in latitude, longitude, and depth
+  - Hypocenter location may be specified as a fraction of fault length and a fraction of fault width along-strike and down-dip position, respectively.  Relative to the upper-left corner of rupture plane (that is, the first vertex of rupture trace in the finite-fault file), 
 - Line 3:
 - Line 4:
 - Line 5:
@@ -24,7 +38,7 @@ Inputs of _P4CF_ consists of three parts: command-line inputs; input file of fin
 
 ### Important Conventions
 
-## Input file of station coordinate (.TLL or .TXY)
+## Station coordinates input file (.TLL or .TXY)
 
 One line per station
 
