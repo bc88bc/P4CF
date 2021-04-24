@@ -3,17 +3,24 @@ README
 Brian Chiou
 April 12, 2021
 
-Given a station location, FORTRAN code *P4CF* computes source and path
-**P**arameters for(**4**) a **C**urved **F**ault rupture. This code has
-been used in PEER’s NGA-West2 and NGA-Subduction projects
-(*r**e**f**e**r**e**n**c**e*) to calculate source and path metadata for
-the respective project database.
+FORTRAN code *P4CF* computes source and path **P**arameters for(**4**) a
+**C**urved **F**ault rupture. This code has been used in PEER’s NGA-West
+Projects (Chiou and others, 2008; Ancheta et al., 2014) and
+NGA-Subduction Project (Contreras et al. 2021) to calculate source and
+path metadata for the respective project database.
 
 # Inputs
 
-Inputs of *P4CF* consists of three parts:
+Inputs to *P4CF* are entered via a DOS command, as follows: 1.
 
-1.  Inputs on command-line
+To terminate calculation, enter *q* for *EQID*.
+
+NOTE: When finite-fault model of an earthquake is unavailable, the
+companion FORTRAN code *CCLD* can be used to simulate possible fault
+rupture planes according to the known information of hypocenter location
+and focal mechanism (strike/dip).
+
+1.  Inputs on command-line, which apply to all earthquakes
 2.  Finite-fault model file, whose name has the extension .*TLL* or
     .*TXY*
 3.  Station coordinates file, whose name has the extension .*SLL* or
@@ -25,11 +32,11 @@ Inputs of *P4CF* consists of three parts:
 
 -   Line 1:
 -   Line 2: Hypocenter location in latitude, longitude, and depth
-    -   Relative to the upper-left corner of rupture plane (that is, the
-        first vertex of rupture trace in the finite-fault file),
-        hypocenter location may be specified as a fraction of fault
-        length and a fraction of fault width for along-strike and
-        down-dip position, respectively.
+    -   Hypocenter location may be specified as a fraction of fault
+        length and a fraction of fault width along-strike and down-dip
+        position, respectively. Relative to the upper-left corner of
+        rupture plane (that is, the first vertex of rupture trace in the
+        finite-fault file),
 -   Line 3:
 -   Line 4:
 -   Line 5:

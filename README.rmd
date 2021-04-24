@@ -5,14 +5,14 @@ date: April 12, 2021
 output: github_document
 ---
 
-Given a station location, FORTRAN code *P4CF* computes source and path **P**arameters for(**4**) a **C**urved **F**ault rupture. This code has been used in PEER's NGA-West and NGA-Subduction projects (Chiou and others, 2008; Ancheta et al., 2014; Contreras et al. 2021) to calculate source and path metadata for the respective project database.
+FORTRAN code *P4CF* computes source and path **P**arameters for(**4**) a **C**urved **F**ault rupture. This code has been used in PEER's NGA-West Projects (Chiou and others, 2008; Ancheta et al., 2014) and NGA-Subduction Project (Contreras et al. 2021) to calculate source and path metadata for the respective project database.
 
 # Inputs
 
-Inputs to _P4CF_ are entered in a DOS command, as follows: 
+Inputs to _P4CF_ are entered via a DOS command, as follows: 
 1. 
 
-To terminate calculation, enter *q* as EQID.
+To terminate calculation, enter *q* for *EQID*.
 
 NOTE: When finite-fault model of an earthquake is unavailable, the companion 
 FORTRAN code *CCLD* can be used to simulate possible fault rupture planes according 
