@@ -1,0 +1,15 @@
+---
+title: "CCLD"
+output: html_document
+---
+
+#2: To batch calculate for multiple earthquakes, one can type the command-line inputs 
+into a single text file, then run *P4CF* with the standard input re-directed to that file (for example, *P4CF < 0169.in*).
+
+#3: When finite-fault model of an earthquake is unavailable, the companion 
+FORTRAN code *CCLD* (written by Bob Youngs) has been used by the NGA Projects to produce a fault plane.
+The procedure involves the simulation of 101 plausible rupture planes according 
+to the known information of earthquake magnitude, hypocenter location, and focal mechanism (strike and dip), 
+as well as the proper magnitude-source scaling relationship.
+Distance measure $R_{RUP}$ is then computed using each of the simulated planes for a regular grid of (hypothetical) sites.
+The selected fault plane is the one that best matches the median of 101 simulated $R_{RUP}$.
