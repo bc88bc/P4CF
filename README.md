@@ -160,15 +160,15 @@ required per earthquake.
     vertices which define the rupture trace.
 
     -   Strike of the rupture trace dictates the order in which its
-        vertices are specified, and vice versa. As an example, strike of
-        segment ![i](https://latex.codecogs.com/png.latex?i "i") is the
-        azimuth from vertex *i* to vertex *i+1*.
+        vertices are specified, and vice versa. Strike of segment
+        ![i](https://latex.codecogs.com/png.latex?i "i") is the azimuth
+        from vertex *i* to vertex *i+1*.
 
     -   If *inLatLon* is FALSE, vertices are given in (X, Y) coordinate.
         If *inLatLon* is TRUE, vertices are given in (*Latitude,
         Longitude*).
 
-    -   Depth of the vertices is specified on the next line as *H\_TOP*.
+    -   Depth of the vertices is specified on the next line as *H\_Top*.
 
 -   Line (5 + *nseg* + 1): (*Dip*(i), i = 1, *nseg*), *H\_Trace*,
     *H\_Top*, *H\_Bot*
@@ -176,7 +176,7 @@ required per earthquake.
     -   (*Dip*(i), i = 1, *nseg*): dip angle (in degrees) of each
         rupture segment
     -   *H\_Trace*: depth (in KM) of fault trace
-        -   *H\_Trace* is deprecated; it is kept for the reason of
+        -   *H\_Trace* is deprecated; it is kept for the sake of
             backward compatibility
     -   *H\_Top*: depth (in KM) of rupture trace
         (![Z\_{TOR}](https://latex.codecogs.com/png.latex?Z_%7BTOR%7D "Z_{TOR}")
@@ -190,12 +190,12 @@ required per earthquake.
     -   So far, rake is used only in the computation of radiation
         pattern coefficient
 
-### List of stations and their coordinates
+### Recording stations and their coordinates
 
 In a station file, following inputs are listed one line per recording
 station.
 
--   *staID*, *StaName*, *Sta\_x*, *Sta\_y* (a10, a55, 2f10.4)
+-   *staID*, *StaName*, *Sta\_x*, *Sta\_y* (*(a10, a55, 2f10.4)*)
 
     -   *staID* is the unique sequence number of the station, usually
         assigned by the ground-motion database developer.
@@ -205,9 +205,9 @@ station.
         owner, etc. This field is usually taken from the station
         description given by the network operator.
 
-    -   (*Sta\_x*, *Sta\_y*), depending on the value of *inLatLon*, is
-        either the Cartesian coordinate (X, Y) or geographic coordinate
-        (*Latitude, Longitude*) of the station
+    -   (*Sta\_x*, *Sta\_y*), depending on the value of *inLatLon*, are
+        either the Cartesian coordinates (X, Y) or geographic
+        coordinates (*Latitude, Longitude*) of the station
 
 # *P4CF* Outputs
 
@@ -285,7 +285,7 @@ output files. Note that the output format of every real variable is
         strike-normal distance to rupture trace
 
     -   ![R\_y = U - L/2](https://latex.codecogs.com/png.latex?R_y%20%3D%20U%20-%20L%2F2 "R_y = U - L/2"),
-        strike-parallel distance to rupture trace
+        strike-parallel distance along rupture trace
 
     -   ![R\_{y0}](https://latex.codecogs.com/png.latex?R_%7By0%7D "R_{y0}")
 
@@ -308,7 +308,7 @@ output files. Note that the output format of every real variable is
 -   Strike-parallel direction
 
     -   *AveStrike*:
-        -   If *method* = 1, the average strike-parallel direction,
+        -   If *method* = 1, the average strike-parallel direction is
             taken as the azimuth from the first vertex to the last
             vertex of user-specified rupture trace.
         -   If *method* = 2, verbatim from the input strike direction.
@@ -318,7 +318,7 @@ output files. Note that the output format of every real variable is
         recording station
         -   It is computed as the length-weighted average of strike
             direction over a stretch of 20-km rupture starting at the
-            closest point and moving toward the hypocenter
+            closest point and extending toward the hypocenter
     -   Though either strike-parallel direction can be utilized to
         rotate the two horizontal components of acceleration time series
         to the strike-normal and the strike-parallel components,

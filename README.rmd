@@ -121,16 +121,16 @@ In addition to the above command-line inputs, two input files are required per e
 - Lines 5 through (5 + *nseg*): Coordinates of the (*nseg* + 1) vertices which define the rupture trace. 
 
    - Strike of the rupture trace dictates the order in which its vertices are specified, and vice versa. 
-     As an example, strike of segment $i$ is the azimuth from vertex *i* to vertex *i+1*.
+     Strike of segment $i$ is the azimuth from vertex *i* to vertex *i+1*.
    
   - If *inLatLon* is FALSE, vertices are given in (X, Y) coordinate. If *inLatLon* is TRUE, vertices are given in (*Latitude, Longitude*).
   
-  - Depth of the vertices is specified on the next line as *H_TOP*.
+  - Depth of the vertices is specified on the next line as *H_Top*.
   
 - Line (5 + *nseg* + 1): (*Dip*(i), i = 1, *nseg*), *H_Trace*, *H_Top*, *H_Bot*
   - (*Dip*(i), i = 1, *nseg*): dip angle (in degrees) of each rupture segment
   - *H_Trace*: depth (in KM) of fault trace
-    - *H_Trace* is deprecated; it is kept for the reason of backward compatibility 
+    - *H_Trace* is deprecated; it is kept for the sake of backward compatibility 
   - *H_Top*: depth (in KM) of rupture trace ($Z_{TOR}$ in GMPE parlance); same value for all segments
   - *H_Bot*: depth (in KM) to the bottom of rupture surface; same value for all segments
 
@@ -140,19 +140,19 @@ In addition to the above command-line inputs, two input files are required per e
 
 
 
-### List of stations and their coordinates
+### Recording stations and their coordinates
 
 In a station file, following inputs are listed one line per recording station.
 
-- *staID*, *StaName*, *Sta_x*, *Sta_y* (a10, a55, 2f10.4)
+- *staID*, *StaName*, *Sta_x*, *Sta_y* (*(a10, a55, 2f10.4)*)
 
   - *staID* is the unique sequence number of the station, usually assigned by the ground-motion database developer.
   
   - *Sta_name* is a station description that may include information about geographic locality, sensor location, network owner, etc. 
      This field is usually taken from the station description given by the network operator.
 
-  - (*Sta_x*, *Sta_y*), depending on the value of *inLatLon*, is either the Cartesian coordinate (X, Y) 
-    or geographic coordinate (*Latitude, Longitude*) of the station
+  - (*Sta_x*, *Sta_y*), depending on the value of *inLatLon*, are either the Cartesian coordinates (X, Y) 
+    or geographic coordinates (*Latitude, Longitude*) of the station
 
 
   
@@ -209,7 +209,7 @@ output format of every real variable is 'f15.7'; it will not be repeated below. 
 
 - Distances derived from (*U, T*)
   - $R_x = |T|$, strike-normal distance to rupture trace
-  - $R_y = U - L/2$, strike-parallel distance to rupture trace
+  - $R_y = U - L/2$, strike-parallel distance along rupture trace
   - $R_{y0}$
     
      $$R_{y0} = 
@@ -224,13 +224,13 @@ output format of every real variable is 'f15.7'; it will not be repeated below. 
 - Strike-parallel direction 
 
   - *AveStrike*: 
-    - If *method* = 1, the average strike-parallel direction, taken as the azimuth from the first vertex to the last vertex of user-specified rupture trace.
+    - If *method* = 1, the average strike-parallel direction is taken as the azimuth from the first vertex to the last vertex of user-specified rupture trace.
     - If *method* = 2, verbatim from the input strike direction. If input value is -999, *AveStrike* is calculated in *P4CF* 
       the same way as for *method* = 1.
   
   - *LocStrike*: Average strike-parallel direction local to the recording station
     - It is computed as the length-weighted average of strike direction 
-      over a stretch of 20-km rupture starting at the closest point and moving toward the hypocenter 
+      over a stretch of 20-km rupture starting at the closest point and extending toward the hypocenter 
 
   - Though either strike-parallel direction can be utilized to rotate the two horizontal components of acceleration time series 
 to the strike-normal and the strike-parallel components, *LocStrike* is the one that has been used for the two NGA-West Projects.
